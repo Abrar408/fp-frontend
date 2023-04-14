@@ -5,6 +5,7 @@ import NavBtn from './NavBtn'
 import ActBtn from './ActBtn'
 import DownArrow from '../icons/DownArrow'
 import RightArrow from '../icons/RightArrow'
+import Link from './Link'
 
 const Navbar = () => {
   const navBtns = ['Product','Solutions','Enterprise','Pricing']
@@ -20,7 +21,9 @@ const Navbar = () => {
             )}
         </div>
         <div className='action-btns'>
+          <Link className='link' href='/login'>
             <ActBtn text={'Login'} endIcon={<RightArrow/>}/>
+          </Link>
         </div>
     </div>
   )

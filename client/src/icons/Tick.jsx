@@ -10,7 +10,6 @@ const Tick = () => {
                     height: '10px',
                     borderBottom: '5px solid cyan',
                     transform: 'rotate(45deg)',
-                    // position: 'absolute',
                 }} ></div>
             <div
             style={{
@@ -19,8 +18,8 @@ const Tick = () => {
                 borderBottom: '5px solid cyan',
                 transform: 'rotate(-45deg)',
                 position: 'absolute',
-                top:'-21px',
-                left:'-10px',
+                top:'-23px',
+                left:'-8px',
             }} ></div>
         </div>
     </>

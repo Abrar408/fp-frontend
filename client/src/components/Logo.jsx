@@ -14,7 +14,7 @@ const Logo = () => {
       }} >
           <div 
             style={{
-              fontSize: 'x-large',
+              fontSize: 'large',
               fontWeight: 'bold',
               margin: 'auto',
             }}>

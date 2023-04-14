@@ -4,23 +4,31 @@ import ActBtn from '../components/ActBtn'
 import Logo from '../components/Logo'
 import RightArrow from '../icons/RightArrow'
 import Link from '../components/Link'
-const Login = () => {
+const Register = () => {
   return (
     <>
         <div className='sign-in'>
             <form className='form'>
                 <Logo/>
-                <h2>Welcome</h2>
-                <p>Login to your account below</p>
+                <h2>Create Your Account</h2>
+                <p>Sign Up to continue</p>
+                <div className='styled-input'>
+                    <input className='input' type='text' required></input>
+                    <p>Username</p>
+                </div>
                 <div className='styled-input'>
                     <input className='input' type='email' required></input>
-                    <p>Enter email</p>
+                    <p>Email address</p>
                 </div>
                 <div className='styled-input'>
                     <input className='input' type='password' required></input>
-                    <p>Enter password</p>
+                    <p>Password</p>
                 </div>
-                <ActBtn text={'Login'} endIcon={<RightArrow/>} sx={{width:'100%',borderRadius:'0px'}} ></ActBtn>
+                <div className='styled-input'>
+                    <input className='input' type='password' required></input>
+                    <p>Confirm password</p>
+                </div>
+                <ActBtn text={'Register'} endIcon={<RightArrow/>} sx={{width:'100%',borderRadius:'0px'}} ></ActBtn>
                 <div className='linkedin'>
                     <div className='in-logo'>in</div>
                     <span>Continue with LinkedIn</span>
@@ -29,12 +37,13 @@ const Login = () => {
                     <div className='line'></div>
                     <div className='or'>OR</div>                    
                 </div>
-                <span>Don't have an account?</span>
-                <Link className='link' href='/register'>Sign Up</Link>
+                <span>Already have an account?</span>
+                <Link className='link' href='/login'>Login</Link>
+                {/* <span>Login</span> */}
             </form>
         </div>
     </>
   )
 }
 
-export default Login
+export default Register
