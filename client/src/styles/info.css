@@ -1,0 +1,22 @@
+.landing{
+    display: flex;
+}
+.info{
+    color: white;
+    flex: 1;
+    height: 80vh;
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center;
+    margin-left: 100px;
+}
+.points{
+    display: flex;
+    align-items: center;
+}
+.points > p{
+    margin-left: 50px;
+}
+.login{
+    flex: 1;
+}

@@ -1,0 +1,21 @@
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 40px 40px 0px 40px;
+}
+.nav-logo{
+    display: flex;
+    align-items: center;
+}
+.nav-logo > span {
+    font-size: larger;
+    font-weight: bold;
+    color: white;;
+}
+.nav-btns{
+    display: flex;
+}
+.action-btns{
+    display: flex;
+}

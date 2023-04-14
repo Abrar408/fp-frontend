@@ -1,0 +1,13 @@
+.act-btn{
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #b3f604;
+    border-radius: 5px;
+    width: fit-content;
+}
+.act-btn-txt{
+    font-size: large;
+    font-weight: 500;
+    color: black;
+}

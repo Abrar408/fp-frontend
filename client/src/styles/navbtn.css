@@ -1,0 +1,11 @@
+
+.nav-btn{
+    display: flex;
+    align-items: center;
+    padding: 10px 10px;
+}
+.nav-btn-txt{
+    font-size: large;
+    font-weight: 500;
+    color: white;
+}
