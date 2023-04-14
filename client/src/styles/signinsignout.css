@@ -2,6 +2,9 @@
     --txt-color: #73bce4;
     --outline-color:#9DA3AE;
 }
+/* *:focus{
+    outline: auto;
+} */
 .sign-in{
     height:100vh;
     display: flex;
@@ -21,24 +24,26 @@
     position: relative;
     width: 100%;
 }
-.input{
-    font-size: large;
-    color: white;
-}
 .styled-input > p,.styled-input > input:invalid ~ p{
+    display: none;
     position: absolute;
     background-color: #232734;
-    color: var(--outline-color);
-    padding: 0px 5px;
-    top:8px;
-    left:15px;
-}
-.styled-input > input:valid ~ p,.styled-input > input:focus ~ p{
     font-size: small;
     color: var(--txt-color);
-    top: -14px;
-    left: 10px;
+    padding: 0px 5px;
+    top:-14px;
+    left:10px;
 }
+.input::placeholder{
+    font-size: medium;
+    color: var(--outline-color);}
+.input:focus::placeholder{
+    color: transparent;
+}
+.styled-input > input:valid ~ p,.styled-input > input:focus ~ p{    
+    display: block;
+}
+
 .form > h2{
     color: white;
     font-weight: normal;
@@ -54,6 +59,8 @@
     margin: 10px 0px;
     background-color: transparent;
     border: 1px solid var(--outline-color);
+    font-size: large;
+    color: white;
 }
 .linkedin{
     width: 100%;
@@ -109,6 +116,6 @@
     color: var(--txt-color);
     text-decoration: none ;
 }
-/* .no-account + span ~ .link {
-    color: var(--txt-color);
-} */
+.error{
+    color: red;
+}

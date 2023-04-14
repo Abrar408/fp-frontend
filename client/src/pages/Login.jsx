@@ -1,24 +1,46 @@
-import React from 'react'
+import React, { useState } from 'react'
 import '../styles/signinsignout.css'
 import ActBtn from '../components/ActBtn'
 import Logo from '../components/Logo'
 import RightArrow from '../icons/RightArrow'
 import Link from '../components/Link'
+import axios from 'axios'
 const Login = () => {
+    const [cred,setCred] = useState({
+        email:'',
+        password:''
+    })
+    const loginUser = async () => {
+        event.preventDefault();
+        console.log('Logging user')
+        // await axios.post('http://localhost:3000/auth/login',cred,{
+        //     withCredentials: true
+        // })
+        // .then(res =>{
+        //     if(res.status == 200){
+        //         dispatch(setCurrUser(res.data.resCred));
+        //         dispatch(setAccessToken(res.data.accessToken));
+        //         navigate('/dashboard');
+        //     }
+        // })
+        // .catch(err => {
+        //     console.log(err);
+        // })
+    }
   return (
     <>
         <div className='sign-in'>
-            <form className='form'>
+            <form className='form' type='submit' onSubmit={(e)=>loginUser(e)}>
                 <Logo/>
                 <h2>Welcome</h2>
                 <p>Login to your account below</p>
                 <div className='styled-input'>
-                    <input className='input' type='email' required></input>
-                    <p>Enter email</p>
+                    <input autoFocus className='input' type='email' required autoComplete='email' value={cred.email} onChange={(e)=>setCred({...cred,email:e.target.value})} placeholder='  Email address'></input>
+                    <p tabIndex={0}>Email address</p>
                 </div>
                 <div className='styled-input'>
-                    <input className='input' type='password' required></input>
-                    <p>Enter password</p>
+                    <input className='input' type='password' required autoComplete='current-password' value={cred.password} onChange={(e)=>setCred({...cred,password:e.target.value})} placeholder='  Password'></input>
+                    <p>Password</p>
                 </div>
                 <ActBtn text={'Login'} endIcon={<RightArrow/>} sx={{width:'100%',borderRadius:'0px'}} ></ActBtn>
                 <div className='linkedin'>
