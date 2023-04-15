@@ -10,7 +10,7 @@ const Logo = () => {
         width: '40px',
         height: '40px',
         display: 'flex',
-        marginRight:'15px',
+        // marginRight:'15px',
         color: 'white',
       }} >
           <div 

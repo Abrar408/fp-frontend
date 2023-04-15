@@ -7,6 +7,7 @@ import Landing from './pages/Landing'
 import Login from './pages/Login'
 import Register from './pages/Register'
 import Dashboard from './pages/Dashboard'
+import CreateJob from './pages/CreateJob'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>  
@@ -22,8 +23,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <Route path='/dashboard'>
       <Dashboard/>  
     </Route> 
-    {/* <Landing/> */}
-    {/* <Login/> */}
-    {/* <Register/> */}
+    <Route path='/create'>
+      <CreateJob/>  
+    </Route> 
   </React.StrictMode>,
 )

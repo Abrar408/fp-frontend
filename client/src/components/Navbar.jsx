@@ -6,23 +6,33 @@ import ActBtn from './ActBtn'
 import DownArrow from '../icons/DownArrow'
 import RightArrow from '../icons/RightArrow'
 import Link from './Link'
+import Lock from '../icons/Lock'
+import Dashboard from '../icons/Dashboard'
+import Add from '../icons/Add'
 
 const Navbar = () => {
-  const navBtns = ['Product','Solutions','Enterprise','Pricing']
+  const navBtns = [{text:'Dashboard',icon:<Dashboard/>,href: '/dashboard'},
+                   {text:'Create Job',icon:<Add/>,href: '/create'}]
+  const toggleNavbar = () => {
+    const nav = document.getElementById('navbar')
+    nav.classList.toggle('toggle-navbar')
+  }
   return (
-    <div className='navbar'>
-        <div className='nav-logo'>
-            <Logo onClick={console.log('1')}/>
+    <div id='navbar' className='navbar'>
+        <div className='nav-logo' onClick={toggleNavbar}>
+            <Logo/>
             <span>Job Management</span>
         </div>
         <div className='nav-btns'>
-            {navBtns.map((txt,index)=> 
-              <NavBtn key={index} text={txt} startIcon={<DownArrow/>} />
+            {navBtns.map((btn,index)=> 
+              <Link className='link' href={btn.href} >
+                <NavBtn key={index} text={btn.text} startIcon={btn.icon} />
+              </Link>
             )}
         </div>
         <div className='action-btns'>
           <Link className='link' href='/'>
-            <ActBtn text={'Logout'} endIcon={<RightArrow/>}/>
+            <ActBtn text={'Logout'} endIcon={<Lock/>}/>
           </Link>
         </div>
     </div>

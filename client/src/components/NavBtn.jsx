@@ -4,7 +4,7 @@ import downArrow from '../icons/DownArrow'
 
 const NavBtn = ({text,startIcon}) => {
   return (
-    <div className='nav-btn'>
+    <div tabIndex={0} className='nav-btn'>
       <div className='end-icon'>{startIcon}</div>
       <span className='nav-btn-txt'>{text}</span>
       

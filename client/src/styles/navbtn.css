@@ -4,7 +4,12 @@
     align-items: center;
     padding: 10px 10px;
 }
+.nav-btn:focus{
+    border-bottom: 2px solid #b3f604;
+    background-color: #232734;
+}
 .nav-btn-txt{
+    margin-left: 5px;
     font-size: large;
     font-weight: 500;
     color: white;

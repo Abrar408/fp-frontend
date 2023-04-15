@@ -10,6 +10,7 @@
     cursor: pointer;
 }
 .act-btn-txt{
+    margin-right: 5px;
     font-size: large;
     font-weight: 500;
     color: black;

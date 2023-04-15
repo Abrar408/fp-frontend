@@ -21,7 +21,7 @@ const SignInSignOut = () => {
             <div className="landing-navbar">
                 <div className='landing-nav-logo'>
                     <Logo/>
-                    <span>Job Management</span>
+                    <p>Job Management</p>
                 </div>
                 <div className='landing-nav-btns'>
                     {navBtns.map((txt,index)=> 

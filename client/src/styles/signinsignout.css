@@ -2,9 +2,9 @@
     --txt-color: #73bce4;
     --outline-color:#9DA3AE;
 }
-*:focus{
+/* *:focus{
     outline: auto;
-}
+} */
 .sign-in{
     height:100vh;
     display: flex;

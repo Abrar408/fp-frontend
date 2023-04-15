@@ -11,11 +11,13 @@
 .landing-nav-logo{
     display: flex;
     align-items: center;
+    justify-content: space-between;
+    width: 210px;
 }
-.landing-nav-logo > span {
+.landing-nav-logo  p {     
     font-size: larger;
     font-weight: bold;
-    color: white;;
+    color: white;
 }
 .landing-nav-btns{
     display: flex;
