@@ -2,9 +2,9 @@
     --txt-color: #73bce4;
     --outline-color:#9DA3AE;
 }
-/* *:focus{
+*:focus{
     outline: auto;
-} */
+}
 .sign-in{
     height:100vh;
     display: flex;
@@ -65,9 +65,14 @@
 .linkedin{
     width: 100%;
     margin: 20px 0px;
+    padding: 10px;
     display: flex;
     align-items: center;
     justify-content: space-around;
+}
+.linkedin:hover{
+    background-color: #4d4f55;
+    cursor: pointer;
 }
 .linkedin > span {
     font-size: large;
@@ -118,4 +123,9 @@
 }
 .error{
     color: red;
+    align-self: flex-start;
+    margin: 0px 0px 10px 0px;
+}
+.success{
+    color: greenyellow;
 }
