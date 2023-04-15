@@ -9,10 +9,12 @@ import Link from './Link'
 import Lock from '../icons/Lock'
 import Dashboard from '../icons/Dashboard'
 import Add from '../icons/Add'
+import Settings from '../icons/Settings'
 
 const Navbar = () => {
   const navBtns = [{text:'Dashboard',icon:<Dashboard/>,href: '/dashboard'},
-                   {text:'Create Job',icon:<Add/>,href: '/create'}]
+                   {text:'Create Job',icon:<Add/>,href: '/create'},
+                   {text:'Settings',icon:<Settings/>,href: '/settings'}]
   const toggleNavbar = () => {
     const nav = document.getElementById('navbar')
     nav.classList.toggle('toggle-navbar')
