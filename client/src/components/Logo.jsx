@@ -5,7 +5,7 @@ const Logo = () => {
     <button 
       style={{
         backgroundColor: 'transparent',
-        border: '2px solid white',
+        border: '2px solid #b3f604',
         borderRadius: '50%',
         width: '40px',
         height: '40px',

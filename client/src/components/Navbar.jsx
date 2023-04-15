@@ -27,8 +27,8 @@ const Navbar = () => {
         </div>
         <div className='nav-btns'>
             {navBtns.map((btn,index)=> 
-              <Link className='link' href={btn.href} >
-                <NavBtn key={index} text={btn.text} startIcon={btn.icon} />
+              <Link key={index} className='link' href={btn.href} >
+                <NavBtn  text={btn.text} startIcon={btn.icon} />
               </Link>
             )}
         </div>

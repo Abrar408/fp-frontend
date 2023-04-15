@@ -24,7 +24,7 @@
     position: relative;
     width: 100%;
 }
-.styled-input > p,.styled-input > input:invalid ~ p{
+.styled-input > p,.styled-input > .input:invalid ~ p{
     display: none;
     position: absolute;
     background-color: #232734;
@@ -40,7 +40,7 @@
 .input:focus::placeholder{
     color: transparent;
 }
-.styled-input > input:valid ~ p,.styled-input > input:focus ~ p{    
+.styled-input > .input:valid ~ p,.styled-input > .input:focus ~ p{    
     display: block;
 }
 
