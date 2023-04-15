@@ -2,8 +2,9 @@ import React from 'react'
 
 const Logo = () => {
   return (
-    <div 
+    <button 
       style={{
+        backgroundColor: 'transparent',
         border: '2px solid white',
         borderRadius: '50%',
         width: '40px',
@@ -20,7 +21,7 @@ const Logo = () => {
             }}>
               JM
           </div>
-    </div>
+    </button>
   )
 }
 

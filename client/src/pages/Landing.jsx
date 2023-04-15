@@ -5,7 +5,7 @@ import Welcome from '../components/Welcome'
 const Landing = () => {
   return (
     <>
-      <Navbar/>
+      {/* <Navbar/> */}
       <Welcome/>
     </>
   )

@@ -12,17 +12,17 @@ const Navbar = () => {
   return (
     <div className='navbar'>
         <div className='nav-logo'>
-            <Logo/>
+            <Logo onClick={console.log('1')}/>
             <span>Job Management</span>
         </div>
         <div className='nav-btns'>
             {navBtns.map((txt,index)=> 
-              <NavBtn key={index} text={txt} endIcon={<DownArrow/>} />
+              <NavBtn key={index} text={txt} startIcon={<DownArrow/>} />
             )}
         </div>
         <div className='action-btns'>
-          <Link className='link' href='/login'>
-            <ActBtn text={'Login'} endIcon={<RightArrow/>}/>
+          <Link className='link' href='/'>
+            <ActBtn text={'Logout'} endIcon={<RightArrow/>}/>
           </Link>
         </div>
     </div>

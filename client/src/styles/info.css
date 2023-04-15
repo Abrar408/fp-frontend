@@ -1,5 +1,30 @@
 .landing{
     display: flex;
+    flex-direction: column;
+}
+.landing-navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 40px 40px 0px 40px;
+}
+.landing-nav-logo{
+    display: flex;
+    align-items: center;
+}
+.landing-nav-logo > span {
+    font-size: larger;
+    font-weight: bold;
+    color: white;;
+}
+.landing-nav-btns{
+    display: flex;
+}
+.landing-action-btns{
+    display: flex;
+}
+.landing-info{
+    display: flex;
 }
 .info{
     color: white;

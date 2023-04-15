@@ -10,7 +10,7 @@ const DownArrow = () => {
       borderBottom: '2px solid white',
       borderRight: '2px solid white',
       transform: 'rotate(45deg)',
-      marginLeft: '5px',
+      marginRight: '5px',
     }}></div>
   )
 }
