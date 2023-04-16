@@ -23,7 +23,7 @@ const CreateJob = () => {
   const createJob = async () => {
     event.preventDefault();
     console.log('creating task')
-    await axios.post('http://localhost:3000/job/create',task)
+    await axios.post('http://localhost:3000/job/create',{...task,assignedBy:currUser})
     .then(res =>{
         if(res.status == 200){
             // console.log(res)
@@ -97,7 +97,7 @@ const hideResult = (event) => {
                   <span className='success'>{success}</span>
                   <div className='styled-input'>
                     <input className='input' type='text' placeholder='  Job name' required 
-                     onChange={(e)=>setTask({...task,jobName:e.target.value})}></input>
+                     value={task.jobName} onChange={(e)=>setTask({...task,jobName:e.target.value})}></input>
                     <p>Job name</p>
                   </div>
                   <div className='styled-input'>
@@ -114,7 +114,7 @@ const hideResult = (event) => {
                     </div>
                   </div>
                   <div className='styled-input'>
-                    <input className='input' type='date' placeholder='  Due date' required onChange={(e)=>setTask({...task,dueDate:e.target.value})}></input>
+                    <input className='input' type='date' placeholder='  Due date' required value={task.dueDate} onChange={(e)=>setTask({...task,dueDate:e.target.value})}></input>
                     <p>Due date</p>
                   </div>
                   <div className='styled-input'>
@@ -122,7 +122,7 @@ const hideResult = (event) => {
                     <p>Assigned by</p>
                   </div>
                   <div className='styled-input'>
-                    <textarea className='input' type='text' placeholder='  Task'  required onChange={(e)=>setTask({...task,task:e.target.value})}></textarea>
+                    <textarea className='input' type='text' placeholder='  Task'  required value={task.task} onChange={(e)=>setTask({...task,task:e.target.value})}></textarea>
                     <p>Task</p>
                   </div>
                   <span className='error'>{err}</span>
