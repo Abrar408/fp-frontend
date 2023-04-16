@@ -14,60 +14,35 @@ socket.on('connect', () => {
   console.log('Connected to socket')
 })
 const Dashboard = () => {
-  const navigate = useNavigate()
 
+  const navigate = useNavigate()
   const dispatch = useDispatch()
   const [render,setRender] = useState(false)
-  const [verifying,setVerifying] = useState(true)
   const currUser = useSelector((state)=> state.user.currUser.username)
   const admin = useSelector((state)=> state.user.currUser.admin)
   const [tasks,setTasks] = useState([])
 
   socket.on('dashboard', () => {
-    console.log('lll')
+    console.log('updating dashboard')
     setRender((render)=>!render)
   })
 
   const getJobs = async () => {
     await axios.post('http://localhost:3000/job/get',{assignedTo:currUser})
     .then((res) => {
-      console.log(res.data)
+      // console.log(res.data)
       setTasks(res.data)
     })
     .catch((err) => console.error(err))
   }
 
   useEffect(() => {
-    const verifyToken = async () => {
-      await axios.get('http://localhost:3000/refresh',{
-        withCredentials: true,
-      })
-      .then(res => {
-        dispatch(setCurrUser(res.data.resCred))
-        dispatch(setAccessToken(res.data.accessToken));
-        setVerifying(false)
-      })
-      .catch(err => {
-        console.error(err);
-        navigate('/login');
-      })
-    }
-    verifyToken();
-  },[])
-
-  useEffect(() => {
-    
-    if(!verifying){
-      getJobs()
-    }
-  },[render,currUser,verifying])
+    getJobs()
+  },[render])
   return (
     
     <>
-    {verifying ? (
-    <Loading/>
-    ) : (
-      <div className='container'>
+    <div className='container'>
             <Navbar/>
             <div className='card pending-task'>
                 <h1 >Pending tasks</h1>
@@ -107,9 +82,7 @@ const Dashboard = () => {
             <div className='card completed-task'>
                 <h1 >Completed tasks</h1>
             </div>
-      </div>
-    )}
-      
+      </div>      
     </>
   )
 }

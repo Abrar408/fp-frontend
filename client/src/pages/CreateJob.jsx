@@ -53,17 +53,17 @@ const CreateJob = () => {
     })
 }
 
-function debounce(func, timeout = 300){
-  let timer;
-  return (...args) => {
-    clearTimeout(timer);
-    timer = setTimeout(() => { func.apply(this, args); }, timeout);
-  };
-}
+// function debounce(func, timeout = 300){
+//   let timer;
+//   return (...args) => {
+//     clearTimeout(timer);
+//     timer = setTimeout(() => { func.apply(this, args); }, timeout);
+//   };
+// }
 
-const processChange = debounce((e) => {
-  console.log(e)
-  handleChange(e)});
+// const processChange = debounce((e) => {
+//   console.log(e)
+//   handleChange(e)});
 
 useEffect(()=>{    
   const getUserList = async () => {
@@ -99,7 +99,7 @@ const hideResult = (event) => {
     <>
       <div className='container'>
             <Navbar/>
-            <div className='card'>
+            <div className='card create-task'>
                 <h1>Create New Job</h1>
                 <form className='form' type='submit' onSubmit={(e)=>createJob(e)}>
                   
@@ -114,7 +114,7 @@ const hideResult = (event) => {
                     <p>Assigned to</p>
                     <div tabIndex={0} id='search-result'>
                       {userList.map((user, index)=>{
-                        return <div tabIndex={0} key={index} onClick={()=>{
+                        return <div className='search-user' tabIndex={0} key={index} onClick={()=>{
                           console.log('click')
                           setTask({...task,assignedTo:user.username})
                           hideResult()

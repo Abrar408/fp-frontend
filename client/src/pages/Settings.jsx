@@ -6,7 +6,7 @@ const Settings = () => {
     <>
         <div className='container'>
             <Navbar/>
-            <div className='card'>
+            <div className='card settings'>
                 <h1 >User roles</h1>
             </div>
             <div></div>

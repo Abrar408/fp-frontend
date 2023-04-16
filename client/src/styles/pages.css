@@ -19,7 +19,7 @@ h1{
     display: none;
     margin-top: -10px;
     z-index: 1;
-    border-top: 3px solid #b3f604;
+    /* border-top: 3px solid #b3f604; */
     border-bottom-left-radius: 5px;
     border-bottom-right-radius:5px ;
     overflow: auto;
@@ -75,7 +75,7 @@ h1{
     /* outline: auto; */
 }
 ::-webkit-scrollbar{
-    width: 5px;
+    width: 10px;
     height: 3px;
     border-radius: 5px;
     /* background-color: #b3f604; */
@@ -102,4 +102,20 @@ h1{
 .completed-task{
     width:300px;
     margin-left: 0px;
+}
+.search-user{
+    margin: 5px;
+    padding: 5px;
+    padding-left: 20px;
+    font-size: large;
+    background-color: #232734;
+    cursor: pointer;
+    border-radius: 5px;
+}
+.search-user:hover{
+    color:#b3f604;
+    background-color: #232734;
+}
+.create-task,.settings{
+    margin-left: 80px;
 }

@@ -10,10 +10,14 @@ import Lock from '../icons/Lock'
 import Dashboard from '../icons/Dashboard'
 import Add from '../icons/Add'
 import Settings from '../icons/Settings'
-import { useSelector } from 'react-redux'
-import { Link } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import { Link, useNavigate } from 'react-router-dom'
+import { setCurrUser,setAccessToken} from '../features/UserSlice';
+import axios from 'axios'
 
 const Navbar = () => {
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
   const admin = useSelector((state)=> state.user.currUser.admin)
   let navBtns = []
   if(admin){
@@ -23,7 +27,15 @@ const Navbar = () => {
   } else {
     navBtns = [{text:'Dashboard',icon:<Dashboard/>,to: '/dashboard'}]
   }
-  
+  const handleLogout = async () => {
+    console.log('Logout')
+    await axios.get('http://localhost:3000/logout',{
+      withCredentials: true,
+    })
+    dispatch(setCurrUser({}));
+    dispatch(setAccessToken(''));
+    navigate('/');
+  }
   const toggleNavbar = () => {
     const nav = document.getElementById('navbar')
     nav.classList.toggle('toggle-navbar')
@@ -42,9 +54,11 @@ const Navbar = () => {
             )}
         </div>
         <div className='action-btns'>
-          <Link className='link' to='/'>
+          {/* <Link className='link' to='/'> */}
+          <div onClick={()=>{handleLogout()}}>
             <ActBtn text={'Logout'} endIcon={<Lock/>}/>
-          </Link>
+            </div>
+          {/* </Link> */}
         </div>
     </div>
   )
