@@ -5,7 +5,12 @@ import Logo from '../components/Logo'
 import RightArrow from '../icons/RightArrow'
 import Link from '../components/Link'
 import axios from 'axios'
+import {useDispatch} from 'react-redux'
+import { setCurrUser, setAccessToken} from '../features/UserSlice'
+
 const Login = () => {
+    const dispatch = useDispatch();
+
     const [err,setErr] = useState('');
     const [cred,setCred] = useState({
         email:'',
@@ -19,8 +24,8 @@ const Login = () => {
         })
         .then(res =>{
             if(res.status == 200){
-                // dispatch(setCurrUser(res.data.resCred));
-                // dispatch(setAccessToken(res.data.accessToken));
+                dispatch(setCurrUser(res.data.resCred));
+                dispatch(setAccessToken(res.data.accessToken));
                 // navigate('/dashboard');
                 console.log('user logged in')
 

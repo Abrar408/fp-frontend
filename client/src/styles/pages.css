@@ -13,7 +13,7 @@ h1{
 }
 #search-result{
     width: 100%;
-    height: 100px;
+    max-height: 300px;
     background-color: #4d4f55;
     position: absolute;
     display: none;
@@ -22,6 +22,14 @@ h1{
     border-top: 3px solid #b3f604;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius:5px ;
+    overflow: auto;
+}
+#search-result:focus{
+    display: block !important;
+}
+::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+    margin-right: 20px;
 }
 .show-search{
     display: block !important;

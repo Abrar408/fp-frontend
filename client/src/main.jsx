@@ -10,9 +10,12 @@ import Register from './pages/Register'
 import Dashboard from './pages/Dashboard'
 import CreateJob from './pages/CreateJob'
 import Settings from './pages/Settings'
+import {store} from './app/store';
+import {Provider} from 'react-redux';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>  
+    <Provider store={store}>
     <Route path='/'>
       <Landing/>  
     </Route> 
@@ -31,5 +34,6 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <Route path='/settings'>
       <Settings/> 
     </Route>
+    </Provider>
   </React.StrictMode>,
 )
