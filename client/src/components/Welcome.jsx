@@ -5,8 +5,9 @@ import ActBtn from './ActBtn'
 import Logo from './Logo'
 import NavBtn from './NavBtn'
 import DownArrow from '../icons/DownArrow'
-import Link from './Link'
+// import Link from './Link'
 import RightArrow from '../icons/RightArrow'
+import { Link } from 'react-router-dom';
 
 const SignInSignOut = () => {
     const navBtns = ['Product','Solutions','Enterprise','Pricing']
@@ -29,7 +30,7 @@ const SignInSignOut = () => {
                     )}
                 </div>
                 <div className='landing-action-btns'>
-                    <Link className='link' href='/login'>
+                    <Link className='link' to={'/login'}>
                         <ActBtn text={'Login'} endIcon={<RightArrow/>}/>
                     </Link>
                 </div>

@@ -5,16 +5,25 @@ import NavBtn from './NavBtn'
 import ActBtn from './ActBtn'
 import DownArrow from '../icons/DownArrow'
 import RightArrow from '../icons/RightArrow'
-import Link from './Link'
+// import Link from './Link'
 import Lock from '../icons/Lock'
 import Dashboard from '../icons/Dashboard'
 import Add from '../icons/Add'
 import Settings from '../icons/Settings'
+import { useSelector } from 'react-redux'
+import { Link } from 'react-router-dom'
 
 const Navbar = () => {
-  const navBtns = [{text:'Dashboard',icon:<Dashboard/>,href: '/dashboard'},
-                   {text:'Create Job',icon:<Add/>,href: '/create'},
-                   {text:'Settings',icon:<Settings/>,href: '/settings'}]
+  const admin = useSelector((state)=> state.user.currUser.admin)
+  let navBtns = []
+  if(admin){
+    navBtns = [{text:'Dashboard',icon:<Dashboard/>,to: '/dashboard'},
+    {text:'Create Job',icon:<Add/>,to: '/create'},
+    {text:'Settings',icon:<Settings/>,to: '/settings'}]
+  } else {
+    navBtns = [{text:'Dashboard',icon:<Dashboard/>,to: '/dashboard'}]
+  }
+  
   const toggleNavbar = () => {
     const nav = document.getElementById('navbar')
     nav.classList.toggle('toggle-navbar')
@@ -27,7 +36,7 @@ const Navbar = () => {
         </div>
         <div className='nav-btns'>
             {navBtns.map((btn,index)=> 
-              <Link key={index} className='link' href={btn.href} >
+              <Link key={index} className='link' to={btn.to} >
                 <NavBtn  text={btn.text} startIcon={btn.icon} />
               </Link>
             )}

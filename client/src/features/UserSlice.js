@@ -4,6 +4,7 @@ const initialState ={
     currUser:{
         username:'',
         email:'',
+        admin:false,
     },
     accessToken:'',    
 };

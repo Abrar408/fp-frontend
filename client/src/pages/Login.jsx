@@ -3,10 +3,11 @@ import '../styles/signinsignout.css'
 import ActBtn from '../components/ActBtn'
 import Logo from '../components/Logo'
 import RightArrow from '../icons/RightArrow'
-import Link from '../components/Link'
+// import Link from '../components/Link'
 import axios from 'axios'
 import {useDispatch} from 'react-redux'
 import { setCurrUser, setAccessToken} from '../features/UserSlice'
+import { Link } from 'react-router-dom'
 
 const Login = () => {
     const dispatch = useDispatch();
@@ -68,7 +69,7 @@ const Login = () => {
                     <div className='or'>OR</div>                    
                 </div>
                 <span>Don't have an account?</span>
-                <Link className='link' href='/register'>Sign Up</Link>
+                <Link className='link' to='/register'>Sign Up</Link>
             </form>
         </div>
     </>

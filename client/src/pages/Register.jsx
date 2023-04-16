@@ -3,8 +3,9 @@ import '../styles/signinsignout.css'
 import ActBtn from '../components/ActBtn'
 import Logo from '../components/Logo'
 import RightArrow from '../icons/RightArrow'
-import Link from '../components/Link'
+// import Link from '../components/Link'
 import axios from 'axios'
+import { Link } from 'react-router-dom'
 const Register = () => {
     const [err,setErr] = useState('');
     const [success,setSuccess] = useState('');
@@ -86,7 +87,7 @@ const Register = () => {
                     <div className='or'>OR</div>                    
                 </div>
                 <span>Already have an account?</span>
-                <Link className='link' href='/login'>Login</Link>
+                <Link className='link' to='/login'>Login</Link>
                 {/* <span>Login</span> */}
             </form>
         </div>

@@ -5,6 +5,13 @@ import Pencil from '../icons/Pencil'
 import axios from 'axios'
 import { useState } from 'react'
 import { useSelector } from 'react-redux'
+import { io } from 'socket.io-client'
+
+const socket = io('http://localhost:5000')
+socket.on('connect', () => {
+  console.log('Connected to socket')
+})
+
 
 const CreateJob = () => {
   const currUser = useSelector((state)=> state.user.currUser.username)
@@ -22,11 +29,13 @@ const CreateJob = () => {
  
   const createJob = async () => {
     event.preventDefault();
+    
     console.log('creating task')
     await axios.post('http://localhost:3000/job/create',{...task,assignedBy:currUser})
     .then(res =>{
         if(res.status == 200){
             // console.log(res)
+            socket.emit('taskCreated','')
             setSuccess(res.data)
             setErr('');
             setTask({
