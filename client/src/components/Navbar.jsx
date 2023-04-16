@@ -42,7 +42,7 @@ const Navbar = () => {
             )}
         </div>
         <div className='action-btns'>
-          <Link className='link' href='/'>
+          <Link className='link' to='/'>
             <ActBtn text={'Logout'} endIcon={<Lock/>}/>
           </Link>
         </div>

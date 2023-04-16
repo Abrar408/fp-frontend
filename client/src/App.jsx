@@ -1,6 +1,6 @@
 import {Routes,Route,useNavigate} from 'react-router-dom';
 import Landing from './pages/Landing';
-import Dashboard from './icons/Dashboard';
+import Dashboard from './pages/Dashboard';
 import CreateJob from './pages/CreateJob';
 import Settings from './pages/Settings';
 import Login from './pages/Login';
