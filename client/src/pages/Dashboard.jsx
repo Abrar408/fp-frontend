@@ -50,14 +50,30 @@ const Dashboard = () => {
     console.log('submitting')
     await axios.post('http://localhost:3000/job/submit',{jobName})
     .then(()=> socket.emit('dashboard',''))
-    // dispatch(setCurrUser({}));
-    // dispatch(setAccessToken(''));
-    // navigate('/');
+  }
+  const acceptJob = async (jobName) => {
+    console.log('submitting')
+    await axios.post('http://localhost:3000/job/accept',{jobName})
+    .then(()=> socket.emit('dashboard',''))
+  }
+  const rejectJob = async (jobName) => {
+    console.log('submitting')
+    await axios.post('http://localhost:3000/job/reject',{jobName})
+    .then(()=> socket.emit('dashboard',''))
   }
 
   useEffect(() => {
     getJobs()
   },[render])
+  const filterAdminResults = (data) =>{
+    return data.status == 'in Review...' || data.status == 'pending...'
+  }
+  const filterPendingResults = (data) =>{
+    return data.status == 'in Review...' || data.status == 'pending...'
+  }
+  const filterCompletedResults = (data) =>{
+    return data.status == 'Completed' || data.status == 'Rejected'
+  }
   return (
     
     <>
@@ -68,7 +84,7 @@ const Dashboard = () => {
                 <h1 >Tasks to review</h1>
                 <div>
                   {tasks.length>0 ? (
-                    tasks.map((task) =>{
+                    tasks.filter(filterAdminResults).map((task) =>{
                       return <div className='task'>
                         <div className='task-row'>
                         <div>Job Name:</div>
@@ -83,11 +99,28 @@ const Dashboard = () => {
                         <span>{task.dueDate}</span>
                       </div>
                       <div className='task-row'>
+                        <div>Submitted on:</div>
+                        <span>{task.submittedOn}</span>
+                      </div>
+                      <div className='task-row'>
                         <div>Status:</div>
                         <span>{task.status}</span>
                       </div>
                       <div className='task-row'>
                         <textarea readOnly>{task.task}</textarea>
+                      </div >
+                      <div className='task-row'> 
+                      {task.status === 'in Review...' ? (
+                        <>
+                        <div onClick={()=>{acceptJob(task.jobName)}}>
+                          <ActBtn text={'Accept'} sx={{width:'115px'}}/>
+                        </div>
+                        <div onClick={()=>{rejectJob(task.jobName)}}>
+                          <ActBtn text={'Reject'} sx={{width:'115px',color:'red'}}/>
+                        </div>
+                        </>
+                      ) : (<p></p>)}                       
+                        
                       </div >
                       </div>
                     })
@@ -100,7 +133,7 @@ const Dashboard = () => {
                 <h1 >Pending tasks</h1>
                 <div>
                   {tasks.length>0 ? (
-                    tasks.map((task)=>{
+                    tasks.filter(filterPendingResults).map((task)=>{
                       return <div className='task'>
                       <div className='task-row'>
                         <div>Job Name:</div>
@@ -142,6 +175,47 @@ const Dashboard = () => {
             </div>
             <div className='card completed-task'>
                 <h1 >Completed tasks</h1>
+                <div>
+                  {tasks.length>0 ? (
+                    tasks.filter(filterCompletedResults).map((task)=>{
+                      return <div className='task'>
+                      <div className='task-row'>
+                        <div>Job Name:</div>
+                        <span>{task.jobName}</span>
+                      </div>
+                      <div className='task-row'>
+                        <div>Assigned by:</div>
+                        <span>{task.assignedBy}</span>
+                      </div>
+                      <div className='task-row'>
+                        <div>Due date:</div>
+                        <span>{task.dueDate}</span>
+                      </div>
+                      <div className='task-row'>
+                        <div>Status:</div>
+                        <span>{task.status}</span>
+                      </div>
+                      <div className='task-row'>
+                        <textarea readOnly>{task.task}</textarea>
+                      </div >
+                      {task.status === 'pending...' ? (
+                        <div onClick={()=>{submitJob(task.jobName)}}>
+                        <ActBtn text={'Submit'} endIcon={<RightArrow/>} sx={{width:'100%'}}/>
+                        </div>
+                      ) : (
+                        <ActBtn id='actBtn' text={'Submitted'} disabled={'true'} sx={{width:'100%'}}/>
+                      )}
+                      {/* <div onClick={()=>{submitJob(task.jobName)}}>
+                      <ActBtn text={'Submit'} endIcon={<RightArrow/>} sx={{width:'100%'}}/>
+                      </div> */}
+                    </div>
+                    })
+                      
+                  ) : (
+                    <p></p>
+                  )}
+                  
+                </div>
             </div>
             </>
             )}

@@ -61,6 +61,7 @@ h1{
 }
 .task-row{
     display: flex;
+    justify-content: space-around;
     margin: 5px 0px;
 }
 .task-row > div{

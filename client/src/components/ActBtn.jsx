@@ -6,6 +6,7 @@ const ActBtn = ({text,endIcon,disabled=false,sx}) => {
     <button className={disabled ? 'disabled' : 'act-btn'}
     style={{
       width:sx?.width,
+      backgroundColor:sx?.color,
       borderRadius:sx?.borderRadius,
     }} 
      >
