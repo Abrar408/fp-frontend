@@ -28,12 +28,31 @@ const Dashboard = () => {
   })
 
   const getJobs = async () => {
-    await axios.post('http://localhost:3000/job/get',{assignedTo:currUser})
-    .then((res) => {
-      // console.log(res.data)
-      setTasks(res.data)
-    })
-    .catch((err) => console.error(err))
+    if(admin == true){
+      await axios.post('http://localhost:3000/job/getAdmin',{assignedBy:currUser})
+      .then((res) => {
+        console.log(res.data)
+        setTasks(res.data)
+      })
+      .catch((err) => console.error(err))
+    } else {
+      await axios.post('http://localhost:3000/job/get',{assignedTo:currUser})
+      .then((res) => {
+        console.log(res.data)
+        setTasks(res.data)
+      })
+      .catch((err) => console.error(err))
+    }    
+    
+  }
+
+  const submitJob = async (jobName) => {
+    console.log('submitting')
+    await axios.post('http://localhost:3000/job/submit',{jobName})
+    .then(()=> socket.emit('dashboard',''))
+    // dispatch(setCurrUser({}));
+    // dispatch(setAccessToken(''));
+    // navigate('/');
   }
 
   useEffect(() => {
@@ -44,6 +63,39 @@ const Dashboard = () => {
     <>
     <div className='container'>
             <Navbar/>
+            {admin == true ? (
+              <div className='card review-task'>
+                <h1 >Tasks to review</h1>
+                <div>
+                  {tasks.length>0 ? (
+                    tasks.map((task) =>{
+                      return <div className='task'>
+                        <div className='task-row'>
+                        <div>Job Name:</div>
+                        <span>{task.jobName}</span>
+                      </div>
+                      <div className='task-row'>
+                        <div>Assigned to:</div>
+                        <span>{task.assignedTo}</span>
+                      </div>
+                      <div className='task-row'>
+                        <div>Due date:</div>
+                        <span>{task.dueDate}</span>
+                      </div>
+                      <div className='task-row'>
+                        <div>Status:</div>
+                        <span>{task.status}</span>
+                      </div>
+                      <div className='task-row'>
+                        <textarea readOnly>{task.task}</textarea>
+                      </div >
+                      </div>
+                    })
+                  ) : (<p>No jobs to review</p>)}
+                </div>
+              </div>
+            ) : (
+              <>
             <div className='card pending-task'>
                 <h1 >Pending tasks</h1>
                 <div>
@@ -68,8 +120,17 @@ const Dashboard = () => {
                       </div>
                       <div className='task-row'>
                         <textarea readOnly>{task.task}</textarea>
-                      </div>
+                      </div >
+                      {task.status === 'pending...' ? (
+                        <div onClick={()=>{submitJob(task.jobName)}}>
+                        <ActBtn text={'Submit'} endIcon={<RightArrow/>} sx={{width:'100%'}}/>
+                        </div>
+                      ) : (
+                        <ActBtn id='actBtn' text={'Submitted'} disabled={'true'} sx={{width:'100%'}}/>
+                      )}
+                      {/* <div onClick={()=>{submitJob(task.jobName)}}>
                       <ActBtn text={'Submit'} endIcon={<RightArrow/>} sx={{width:'100%'}}/>
+                      </div> */}
                     </div>
                     })
                       
@@ -82,6 +143,9 @@ const Dashboard = () => {
             <div className='card completed-task'>
                 <h1 >Completed tasks</h1>
             </div>
+            </>
+            )}
+            
       </div>      
     </>
   )

@@ -1,10 +1,24 @@
+
+
 .act-btn{
     display: flex;
     align-items: center;
+    justify-content: center;
     padding: 10px 20px;
     background-color: #b3f604;
     border-radius: 5px;
     width: fit-content;
+}
+.disabled{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    border: 1px solid gray;
+    padding: 10px 20px;
+    border-radius: 5px;
+    width: fit-content;
+    color: white;
 }
 .act-btn:hover{
     cursor: pointer;
@@ -14,4 +28,10 @@
     font-size: large;
     font-weight: 500;
     color: black;
+}
+.dis-act-btn{
+    margin-right: 5px;
+    font-size: large;
+    font-weight: 500;
+    color: #b3f604;
 }

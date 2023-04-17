@@ -1,12 +1,15 @@
 import '../styles/actbtn.css'
 import React from 'react'
-const ActBtn = ({text,endIcon,sx}) => { 
+const ActBtn = ({text,endIcon,disabled=false,sx}) => { 
   return (
-    <button style={{
+    
+    <button className={disabled ? 'disabled' : 'act-btn'}
+    style={{
       width:sx?.width,
       borderRadius:sx?.borderRadius,
-    }} className='act-btn'>
-      <span className='act-btn-txt'>{text}</span>
+    }} 
+     >
+      <span className={disabled ? 'dis-act-btn' : 'act-btn-txt'}>{text}</span>
       <div className='end-icon'>{endIcon}</div>
     </button>
   )
