@@ -2,33 +2,35 @@ import '../styles/info.css'
 import React from 'react'
 import Tick from '../icons/Tick'
 import ActBtn from './ActBtn'
-import Logo from './Logo'
+// import Logo from './Logo'
 import NavBtn from './NavBtn'
 import DownArrow from '../icons/DownArrow'
 // import Link from './Link'
 import RightArrow from '../icons/RightArrow'
 import { Link } from 'react-router-dom';
+import Bank from '../assets/bank.jpg'
+import Logo from '../assets/bank.png'
 
 const SignInSignOut = () => {
-    const navBtns = ['Product','Solutions','Enterprise','Pricing']
+    const navBtns = ['Products','Solutions','Enterprise']
     const points = [
-        'Make comprehensive project timelines',
-        'Track progress, budgets and resources',
-        'Plan and collaborate with your team'
+        'Managing transactions',
+        'Keeping track of your bills',
+        'Everything is just a click away'
     ]
   return (
     <>
         <div className='landing'>
             <div className="landing-navbar">
                 <div className='landing-nav-logo'>
-                    <Logo/>
-                    <p>Job Management</p>
+                    <img src={Logo}></img>
+                    <p>JMHM Bank</p>
                 </div>
-                <div className='landing-nav-btns'>
+                {/* <div className='landing-nav-btns'>
                     {navBtns.map((txt,index)=> 
                     <NavBtn key={index} text={txt} endIcon={<DownArrow/>} />
                     )}
-                </div>
+                </div> */}
                 <div className='landing-action-btns'>
                     <Link className='link' to={'/login'}>
                         <ActBtn text={'Login'} endIcon={<RightArrow/>}/>
@@ -37,8 +39,8 @@ const SignInSignOut = () => {
             </div>
             <div className="landing-info">
                 <div className='info'>
-                    <h1>Job Management Software</h1>
-                    <h3>Track Jobs, schedules and workload</h3>
+                    <h1>JMHM Banking Solution</h1>
+                    <h3>Our services help in</h3>
                     {
                         points.map((point,index)=> {
                             return <div key={index} className='points' >
@@ -49,10 +51,10 @@ const SignInSignOut = () => {
                             
                         )
                     }
-                    <ActBtn text={'Start free trial'} />
+                    <ActBtn text={'Join Us'} />
                 </div>
-                <div className='login'>
-
+                <div className='dash'>
+                    <img src={Bank} ></img>
                 </div>
             </div>            
         </div>

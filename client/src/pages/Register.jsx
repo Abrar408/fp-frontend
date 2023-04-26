@@ -1,16 +1,18 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import '../styles/signinsignout.css'
 import ActBtn from '../components/ActBtn'
-import Logo from '../components/Logo'
+// import Logo from '../components/Logo'
 import RightArrow from '../icons/RightArrow'
 // import Link from '../components/Link'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
+import Logo from '../assets/bank.png'
+
 const Register = () => {
     const [err,setErr] = useState('');
     const [success,setSuccess] = useState('');
     const [cred,setCred] = useState({
-        username:'',
+        name:'',
         email:'',
         password:'',
         confirmPassword:''
@@ -35,9 +37,12 @@ const Register = () => {
                 if(res.status == 200){
                     // console.log(res.data)
                     setSuccess(res.data)
+                    setTimeout(() => {
+                        setSuccess("")
+                    }, 3000);
                     // setTimeout(setSuccess(''),3000)
                     setCred({...cred,
-                        username:'',
+                        name:'',
                         email:'',
                         password:'',
                         confirmPassword:''})
@@ -49,19 +54,17 @@ const Register = () => {
             })
         }
     }
-    const linkedinRegister = async () => {
-        window.open("http://localhost:3000/auth/linkedin", "_self");
-    }
+    
   return ( 
     <>
         <div className='sign-in'>
             <form className='form' type='submit' onSubmit={(e)=>registerUser(e)}>
-                <Logo/>
+            <img src={Logo}></img>
                 <h2>Create Your Account</h2>
                 <p>Sign Up to continue</p>
                 <span className='success'>{success}</span>
                 <div className='styled-input'>
-                    <input className='input' type='text' required value={cred.username} onChange={(e)=>setCred({...cred,username:e.target.value})} placeholder='  Username'></input>
+                    <input className='input' type='text' required value={cred.name} onChange={(e)=>setCred({...cred,name:e.target.value})} placeholder='  Username'></input>
                     <p>Username</p>
                 </div>
                 <div className='styled-input'>
@@ -78,10 +81,7 @@ const Register = () => {
                 </div>
                 <span className='error'>{err}</span>
                 <ActBtn text={'Register'} endIcon={<RightArrow/>} sx={{width:'100%',borderRadius:'0px'}}></ActBtn>
-                <div tabIndex={0} className='linkedin' onClick={()=>{linkedinRegister()}}>
-                    <div className='in-logo'>in</div>
-                    <span>Continue with LinkedIn</span>
-                </div>
+                
                 <div className='no-account'> 
                     <div className='line'></div>
                     <div className='or'>OR</div>                    

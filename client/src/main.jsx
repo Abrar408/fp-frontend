@@ -11,7 +11,7 @@ import Register from './pages/Register';
 import Landing from './pages/Landing';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>  
+  // <React.StrictMode>  
     <Provider store={store}>
       <BrowserRouter>
       <Routes>
@@ -22,6 +22,6 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         </Routes>
       </BrowserRouter>
     </Provider>
-  </React.StrictMode>
+  // </React.StrictMode>
   
 )

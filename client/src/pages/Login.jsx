@@ -1,17 +1,18 @@
 import React, { useState } from 'react'
 import '../styles/signinsignout.css'
 import ActBtn from '../components/ActBtn'
-import Logo from '../components/Logo'
+// import Logo from '../components/Logo'
 import RightArrow from '../icons/RightArrow'
 // import Link from '../components/Link'
 import axios from 'axios'
 import {useDispatch} from 'react-redux'
 import { setCurrUser, setAccessToken} from '../features/UserSlice'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import Logo from '../assets/bank.png'
 
 const Login = () => {
     const dispatch = useDispatch();
-
+    const navigate = useNavigate()
     const [err,setErr] = useState('');
     const [cred,setCred] = useState({
         email:'',
@@ -20,19 +21,12 @@ const Login = () => {
     const loginUser = async () => {
         event.preventDefault();
         console.log('Logging user')
-        await axios.post('http://localhost:3000/auth/login',cred,{
-            withCredentials: true
-        })
+        await axios.post('http://localhost:3000/auth/login',cred)
         .then(res =>{
             if(res.status == 200){
                 dispatch(setCurrUser(res.data.resCred));
-                dispatch(setAccessToken(res.data.accessToken));
-                // navigate('/dashboard');
+                navigate('/dashboard');
                 console.log('user logged in')
-
-                window.history.pushState({}, "", 'dashboard')
-                const navEvent = new PopStateEvent('popstate');
-                window.dispatchEvent(navEvent);
             }
         })
         .catch(err => {
@@ -40,14 +34,11 @@ const Login = () => {
             // console.log(err);
         })
     }
-    const linkedinLogin = async () => {
-        window.open("http://localhost:3000/auth/linkedin", "_self");
-    }
   return (
     <>
         <div className='sign-in'>
             <form className='form' type='submit' onSubmit={(e)=>loginUser(e)}>
-                <Logo/>
+                <img src={Logo}></img>
                 <h2>Welcome</h2>
                 <p>Login to your account below</p>
                 <div className='styled-input'>
@@ -60,10 +51,10 @@ const Login = () => {
                 </div>
                 <span className='error'>{err}</span>
                 <ActBtn text={'Login'} endIcon={<RightArrow/>} sx={{width:'100%',borderRadius:'0px'}} ></ActBtn>
-                <div tabIndex={0} className='linkedin' onClick={()=>{linkedinLogin()}}>
+                {/* <div tabIndex={0} className='linkedin' onClick={()=>{linkedinLogin()}}>
                     <div className='in-logo'>in</div>
                     <span>Continue with LinkedIn</span>
-                </div>
+                </div> */}
                 <div className='no-account'>
                     <div className='line'></div>
                     <div className='or'>OR</div>                    

@@ -5,7 +5,7 @@
     align-items: center;
     justify-content: center;
     padding: 10px 20px;
-    background-color: #b3f604;
+    background-color: #3F79E9;
     border-radius: 5px;
     width: fit-content;
 }
@@ -22,16 +22,17 @@
 }
 .act-btn:hover{
     cursor: pointer;
+    background-color: blue;
 }
 .act-btn-txt{
     margin-right: 5px;
     font-size: large;
     font-weight: 500;
-    color: black;
+    color: white;
 }
 .dis-act-btn{
     margin-right: 5px;
     font-size: large;
     font-weight: 500;
-    color: #b3f604;
+    color: #3F79E9;
 }

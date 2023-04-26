@@ -1,6 +1,6 @@
 import '../styles/navbar.css'
 import React from 'react'
-import Logo from './Logo'
+// import Logo from './Logo'
 import NavBtn from './NavBtn'
 import ActBtn from './ActBtn'
 import DownArrow from '../icons/DownArrow'
@@ -10,30 +10,26 @@ import Lock from '../icons/Lock'
 import Dashboard from '../icons/Dashboard'
 import Add from '../icons/Add'
 import Settings from '../icons/Settings'
+import Statement from '../icons/Statement'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom'
 import { setCurrUser,setAccessToken} from '../features/UserSlice';
 import axios from 'axios'
+import Logo from '../assets/bank.png'
 
 const Navbar = () => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
-  const admin = useSelector((state)=> state.user.currUser.admin)
-  let navBtns = []
-  if(admin){
-    navBtns = [{text:'Dashboard',icon:<Dashboard/>,to: '/dashboard'},
-    {text:'Create Job',icon:<Add/>,to: '/create'},
-    {text:'Settings',icon:<Settings/>,to: '/settings'}]
-  } else {
-    navBtns = [{text:'Dashboard',icon:<Dashboard/>,to: '/dashboard'}]
-  }
+  const admin = true
+  let navBtns = [{text:'Dashboard',icon:<Dashboard/>,to: '/dashboard'},
+  {text:'Add Bill',icon:<Add/>,to: '/create'},
+  {text:'View Bills',icon:<Settings/>,to: '/bills'},
+  {text:'Bank Statement',icon:<Statement/>,to: '/statement'}
+]
+  
   const handleLogout = async () => {
-    console.log('Logout')
-    await axios.get('http://localhost:3000/logout',{
-      withCredentials: true,
-    })
     dispatch(setCurrUser({}));
-    dispatch(setAccessToken(''));
+    // dispatch(setAccessToken(''));
     navigate('/');
   }
   const toggleNavbar = () => {
@@ -43,8 +39,8 @@ const Navbar = () => {
   return (
     <div id='navbar' className='navbar'>
         <div className='nav-logo' onClick={toggleNavbar}>
-            <Logo/>
-            <span>Job Management</span>
+        <img src={Logo}></img>
+            <span>Bank Management</span>
         </div>
         <div className='nav-btns'>
             {navBtns.map((btn,index)=> 

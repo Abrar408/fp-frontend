@@ -5,6 +5,7 @@
   outline: none;
   /* outline: auto; */
   box-sizing: border-box;
+  color: black;
 }
 /* :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -34,7 +35,7 @@ a:hover {
 } */
 
 body {
-  background-color: rgb(17, 22, 36);
+  background-color: white;
   margin: 0px;
   /* margin: 0;
   display: flex;
@@ -42,7 +43,9 @@ body {
   min-width: 320px;
   min-height: 100vh; */
 }
-
+p{
+  color: black;
+}
 /* h1 {
   font-size: 3.2em;
   line-height: 1.1;

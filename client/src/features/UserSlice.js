@@ -2,9 +2,10 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState ={
     currUser:{
-        username:'',
+        id:'',
+        name:'',
         email:'',
-        admin:false,
+        balance: 0
     },
     accessToken:'',    
 };
